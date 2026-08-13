@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Gap - Community and Resources</title>
 <meta name="description" content="About the researcher, open research resources, and ways to contribute to The Gap project.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2310161A'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' font-weight='600' fill='%23C9A24B' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Gap - About the Research">
+<meta property="og:description" content="Meet the researcher, explore the open research record, and share your story.">
+<meta property="og:url" content="https://umema2004.github.io/Fintech-Adoption-Website/community.html">
+<meta property="og:site_name" content="The Gap">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,10 +23,12 @@
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="index.html">The <span>Gap</span></a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="research.html">Research</a>
-      <a href="quiz.html">Quiz</a>
       <a class="active" href="community.html">Community</a>
     </div>
   </div>
@@ -31,17 +41,24 @@
         <div class="reveal">
           <div class="eyebrow">About the researcher</div>
           <h2>Why this project exists</h2>
-          <p>This project began as undergraduate research into whether digital connectivity actually translates into meaningful financial inclusion in Pakistan.</p>
+          <p>This project began as high-school research into whether digital connectivity actually translates into meaningful financial inclusion in Pakistan, carried out with mentorship from an AI/ML engineer working in the field.</p>
           <p>The goal was to use machine learning as a lens for a socioeconomic problem and make the findings accessible beyond an academic PDF.</p>
         </div>
         <div class="identity-card reveal">
           <div class="name">Abdur-Rehman Ashar</div>
-          <div class="role">High School Data Science Researcher - BSS PTC</div>
+          <div class="role">Lead Researcher - Beaconhouse School System PTC, Gujranwala</div>
           <p style="margin-top:18px;color:var(--paper-dim);font-size:14px;">Research interests: Machine Learning, Explainable AI, Financial Inclusion, AI for Social Good</p>
           <div class="identity-links">
-            <a class="btn btn-ghost" href="http://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-ghost" href="https://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan" target="_blank" rel="noopener">GitHub</a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/abdur-rehman-ashar-49531a420/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn btn-ghost" href="mailto:abdurrehmanashar@gmail.com">Email</a>
+          </div>
+          <div class="mentor-credit">
+            <div>
+              <div class="mentor-label">Mentor &amp; Co-Author</div>
+              <div class="mentor-name">Umema Ashar</div>
+              <div class="mentor-role">KDD Lab, FAST-NUCES, Islamabad</div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,19 +73,20 @@
         <p>The website is the accessible layer. The paper, code, and source data are the research record.</p>
       </div>
       <div class="resource-grid reveal">
-        <div class="resource"><h3>Research paper</h3><p>Full methodology, statistical analysis, validation, results and limitations.</p><a href="#" target="_blank">VIEW PAPER -></a></div>
-        <div class="resource"><h3>GitHub repository</h3><p>Code, notebooks, figures, environment and replication instructions.</p><a href="http://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan" target="_blank">VIEW CODE -></a></div>
+        <div class="resource"><h3>Research paper</h3><p>Full methodology, statistical analysis, validation, results and limitations.</p><a href="https://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan/blob/main/paper/fintech_adoption_pakistan.pdf" target="_blank" rel="noopener">VIEW PAPER -></a></div>
+        <div class="resource"><h3>GitHub repository</h3><p>Code, notebooks, figures, environment and replication instructions.</p><a href="https://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan" target="_blank" rel="noopener">VIEW CODE -></a></div>
         <div class="resource"><h3>Global Findex data</h3><p>Public World Bank source dataset used for the Pakistan analysis.</p><a href="https://microdata.worldbank.org/index.php/catalog/7961" target="_blank" rel="noopener">VIEW SOURCE DATA -></a></div>
       </div>
       <div class="refs reveal">
         <div class="eyebrow">References</div>
         <ol style="margin-top:16px;">
-          <li>World Bank, Global Findex Database 2025.</li>
-          <li>The Gap - underlying research paper, 2026.</li>
-          <li>Lundberg and Lee, SHAP and model explainability literature.</li>
-          <li>Final methodology references should mirror the bibliography of the published paper.</li>
+          <li>T. A. Chowdhury et al., "Modeling financial literacy through explainable machine learning and behavioral segmentation in emerging economies," <em>Computers in Human Behavior Reports</em>, 2026.</li>
+          <li>A. Emuron, A. D. Kapim Kenfack, and M. Msimanga, "Fintech predictive modelling using machine learning: An empirical investigation of South Africa," <em>African Journal of Science, Technology, Innovation and Development</em>, pp. 889-899, 2025.</li>
+          <li>S. Saidy and A. D. Hassan, "Modeling drivers of fintech adoption in Sub-Saharan Africa using machine learning," <em>Digital Finance</em>, vol. 7, pp. 1065-1091, 2025.</li>
+          <li>World Bank, "Global Findex Database 2025, Pakistan," Reference: PAK_2024_FINDEX_v02_M, World Bank Microdata Library, 2025.</li>
+          <li>T. Suri and W. Jack, "The long-run poverty and gender impacts of mobile money," <em>Science</em>, vol. 354, no. 6317, pp. 1288-1292, 2016.</li>
+          <li>A. Demirguc-Kunt, L. Klapper, D. Singer, and S. Ansar, <em>The Global Findex Database 2021: Financial Inclusion, Digital Payments, and Resilience in the Age of COVID-19</em>. Washington, DC: World Bank, 2022.</li>
         </ol>
-        <p class="tiny-source">Before launch, replace this list with exact citations from the final paper and add citation markers to individual claims.</p>
       </div>
     </div>
   </section>
@@ -81,19 +99,21 @@
           <h2 style="margin-top:14px; margin-bottom:24px; font-size:clamp(26px,3.2vw,36px);">The data can show us the gap. It cannot tell us why.</h2>
           <p>We know many people have access but do not use digital finance. What we do not know from a spreadsheet is what is actually stopping them.</p>
           <p>If you know someone in this position, or you have been in it yourself, your story helps make the numbers human.</p>
-          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Share your story -></a>
+          <!-- TODO: replace with a real Google Form / Typeform URL before this goes live -->
+          <a class="btn btn-primary" href="mailto:abdurrehmanashar@gmail.com?subject=My%20story%20-%20The%20Gap" target="_blank" rel="noopener">Share your story -></a>
         </div>
 
         <div class="reveal">
           <div class="engage-card">
             <h4><span class="dot"></span> Follow the research</h4>
             <p>Findings, charts, and plain-language breakdowns, posted as the project grows.</p>
+            <!-- TODO: replace with real Instagram handle once created -->
             <a class="btn btn-ghost" href="https://instagram.com/YOUR_HANDLE_HERE" target="_blank" rel="noopener" style="width:100%; justify-content:center;">@YOUR_HANDLE on Instagram</a>
           </div>
           <div class="engage-card">
             <h4><span class="dot" style="background:var(--brass);"></span> Read the full study</h4>
             <p>The complete methodology, statistical validation, and paper this site is built on.</p>
-            <a class="btn btn-ghost" href="#" style="width:100%; justify-content:center;">View the research paper</a>
+            <a class="btn btn-ghost" href="https://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan/blob/main/paper/fintech_adoption_pakistan.pdf" target="_blank" rel="noopener" style="width:100%; justify-content:center;">View the research paper</a>
           </div>
         </div>
       </div>
@@ -108,12 +128,11 @@
         <h5>Navigate</h5>
         <a href="index.html">Home</a>
         <a href="research.html">Research details</a>
-        <a href="quiz.html">Segment quiz</a>
         <a href="community.html">Community and resources</a>
       </div>
       <div class="footer-col">
         <h5>Connect</h5>
-        <a href="https://instagram.com/YOUR_HANDLE_HERE" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:abdurrehmanashar@gmail.com">Email</a>
       </div>
     </div>
