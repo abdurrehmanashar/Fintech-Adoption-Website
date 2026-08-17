@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Gap - Research</title>
-<meta name="description" content="Methodology, segmentation, limitations, and impact hypotheses from The Gap research.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2310161A'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' font-weight='600' fill='%23C9A24B' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
-
+<title>Research - Fintech Adoption in Pakistan</title>
+<meta name="description" content="Research question, dataset, methodology, models, clustering, SHAP, robustness, and limitations behind the study.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2310161A'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' font-weight='600' fill='%23C9A24B' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="The Gap - How the Study Was Built">
-<meta property="og:description" content="Methodology, model validation, fairness audit, and limitations behind the research.">
+<meta property="og:title" content="Research - Fintech Adoption in Pakistan">
+<meta property="og:description" content="Research question, dataset, methodology, models, clustering, SHAP, robustness, and limitations.">
 <meta property="og:url" content="https://umema2004.github.io/Fintech-Adoption-Website/research.html">
-<meta property="og:site_name" content="The Gap">
+<meta property="og:site_name" content="Fintech Adoption in Pakistan">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,133 +21,140 @@
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html">The <span>Gap</span></a>
+    <a class="nav-logo" href="index.html">Fintech Adoption in <span>Pakistan</span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a class="active" href="research.html">Research</a>
-      <a href="community.html">Community</a>
+      <a href="findings.html">Findings</a>
+      <a href="interactive.html">Interactive Data</a>
+      <a href="about.html">About</a>
     </div>
   </div>
 </nav>
 
 <main class="page-main">
-  <section id="research">
+
+  <section id="question">
     <div class="wrap">
       <div class="page-intro reveal">
         <div class="eyebrow">Research page</div>
         <h1>How the study was built</h1>
-        <p>A transparent path from survey data to segmentation, predictive modelling, validation, and interpretation.</p>
+        <p>A transparent path from research question to data, methodology, modelling, and validation.</p>
       </div>
 
-      <div class="research-pipeline reveal">
-        <div class="pipeline-step"><div class="step-no">01 - DATA</div><h3>Global Findex</h3><p>Pakistan sample with measures of digital access, financial behaviour, demographics and inclusion.</p></div>
-        <div class="pipeline-step"><div class="step-no">02 - DISCOVERY</div><h3>Segmentation</h3><p>k-means clustering identified population profiles; Ward hierarchical clustering provided a cross-check.</p></div>
-        <div class="pipeline-step"><div class="step-no">03 - PREDICTION</div><h3>ML models</h3><p>Random Forest and XGBoost assessed which characteristics are most associated with financial engagement.</p></div>
-        <div class="pipeline-step"><div class="step-no">04 - EXPLANATION</div><h3>SHAP and validation</h3><p>SHAP, bootstrap validation, calibration, and ablation analysis tested robustness and interpretability.</p></div>
-      </div>
-
-      <div class="model-grid" style="margin-top:24px;">
-        <div class="research-card reveal">
-          <div class="eyebrow">Model performance</div>
-          <h3>How predictive are the models?</h3>
-          <p>Metrics from the tuned, cross-validated models reported in the paper. Macro F1 is used throughout since the adoption tiers are substantially imbalanced (68.2% Excluded vs. 2.1% Basic) - accuracy alone can look strong while badly underperforming on smaller classes.</p>
-          <table class="metric-table">
-            <thead><tr><th>Model</th><th>Macro F1</th></tr></thead>
-            <tbody>
-              <tr><td>Random Forest (tuned)</td><td>0.494</td></tr>
-              <tr><td>XGBoost</td><td>0.481</td></tr>
-            </tbody>
-          </table>
-          <p class="metric-note">Repeated cross-validation (50 folds) confirms the Random Forest estimate is stable (mean 0.480, 95% CI 0.447-0.521). XGBoost separately achieved 80.0% raw accuracy - a number that looks strong but is inflated by the imbalanced target, which is exactly why macro F1 is the metric prioritized here.</p>
-        </div>
-
-        <div class="research-card reveal">
-          <div class="eyebrow">Explainability</div>
-          <h3>What predicts engagement?</h3>
-          <p>Mean |SHAP| value per feature, from the tuned Random Forest, averaged across all four adoption tiers.</p>
-          <div class="bar-chart">
-            <div class="bar-row"><span>Saving via mobile money</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span>0.092</span></div>
-            <div class="bar-row"><span>Age</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span>0.057</span></div>
-            <div class="bar-row"><span>Workforce participation</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span>0.055</span></div>
-            <div class="bar-row"><span>Informal saving</span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div><span>0.036</span></div>
-            <div class="bar-row"><span>Income quintile</span><div class="bar-track"><div class="bar-fill" style="width:35%"></div></div><span>0.032</span></div>
-            <div class="bar-row"><span>Mobile phone ownership</span><div class="bar-track"><div class="bar-fill" style="width:26%"></div></div><span>0.024</span></div>
-            <div class="bar-row"><span>Gender</span><div class="bar-track"><div class="bar-fill" style="width:21%"></div></div><span>0.019</span></div>
-          </div>
-          <p class="metric-note">Gender ranks 7th here - but that's <em>this specific chart's</em> question: "how much does gender help predict one person's adoption tier, alongside everything else." It answers a different question than the population-level result below, where gender is the single strongest predictor of which of the three segments someone belongs to (Cramer's V = 0.807). Both are real findings; they're just not the same measurement.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:80px;" class="section-head reveal">
-        <div class="eyebrow">The three populations</div>
-        <h2>Three different versions of financial inclusion</h2>
-        <p>The clusters reflect different relationships between access and participation.</p>
-      </div>
-
-      <div class="profile-grid reveal">
-        <div class="profile-card">
-          <div class="profile-no">01</div><h3>Digitally Excluded</h3><div class="profile-share">43.1%</div>
-          <ul><li><strong>96.3%</strong> women</li><li><strong>28.3%</strong> mobile ownership</li><li><strong>9.7%</strong> regular internet use</li><li><strong>89.3%</strong> formally excluded</li></ul>
-          <blockquote>The problem here is access itself.</blockquote>
-        </div>
-        <div class="profile-card">
-          <div class="profile-no">02</div><h3>Connected but Unengaged</h3><div class="profile-share">44.3%</div>
-          <ul><li><strong>16.3%</strong> women</li><li><strong>98.0%</strong> mobile ownership</li><li><strong>62.3%</strong> regular internet use</li><li><strong>66.8%</strong> formally excluded</li></ul>
-          <blockquote>They are connected but not participating.</blockquote>
-        </div>
-        <div class="profile-card">
-          <div class="profile-no">03</div><h3>Advanced Adopters</h3><div class="profile-share">12.6%</div>
-          <ul><li><strong>10.3%</strong> women</li><li><strong>98.4%</strong> mobile ownership</li><li><strong>93.7%</strong> regular internet use</li><li><strong>0.8%</strong> formally excluded</li></ul>
-          <blockquote>This is what full participation looks like.</blockquote>
-        </div>
+      <div class="research-card reveal" style="max-width:74ch;">
+        <div class="eyebrow">Research question</div>
+        <h3 style="margin-top:14px;">Does formal financial access in Pakistan translate into actual digital financial usage - and can distinct behavioural segments be identified independently of that question?</h3>
+        <p style="margin-top:16px;">Most financial inclusion research measures access - account ownership, phone ownership, internet availability - as if it were the same thing as inclusion. This study treats that as an empirical question rather than an assumption, and tests it directly against individual-level survey data.</p>
       </div>
     </div>
   </section>
 
-  <section class="alt" id="fairness">
+  <section class="alt" id="dataset">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">A finding worth reading carefully</div>
-        <h2>Why "the model is fairer to women" would be the wrong conclusion</h2>
-        <p>A direct check of the model's own behaviour turned up something that matters more than it first looks like.</p>
+        <div class="eyebrow">Dataset</div>
+        <h2>Global Findex 2025, Pakistan</h2>
+        <p>Individual-level microdata from the World Bank's Global Findex Database, the primary demand-side data source for cross-country financial inclusion research.</p>
+      </div>
+      <div class="research-card reveal">
+        <ul style="list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:18px;">
+          <li><strong style="color:var(--brass); font-family:'IBM Plex Mono',monospace;">n = 1,000</strong><br><span style="color:var(--paper-dim); font-size:14px;">respondents, individual-level</span></li>
+          <li><strong style="color:var(--brass); font-family:'IBM Plex Mono',monospace;">183 variables</strong><br><span style="color:var(--paper-dim); font-size:14px;">demographics, access, behaviour, resilience</span></li>
+          <li><strong style="color:var(--brass); font-family:'IBM Plex Mono',monospace;">May-Dec 2024</strong><br><span style="color:var(--paper-dim); font-size:14px;">fieldwork period</span></li>
+          <li><strong style="color:var(--brass); font-family:'IBM Plex Mono',monospace;">Unweighted</strong><br><span style="color:var(--paper-dim); font-size:14px;">figures describe the sample, not a national estimate</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="methodology">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Methodology</div>
+        <h2>From raw survey data to a validated finding</h2>
+        <p>Four stages, each building on the last, with an explicit correction built into the pipeline early on.</p>
       </div>
 
-      <div class="profile-grid reveal">
-        <div class="profile-card">
-          <div class="profile-no">A</div>
-          <h3>The raw numbers</h3>
-          <ul>
-            <li><strong>85.2%</strong> accuracy for women</li>
-            <li><strong>68.9%</strong> accuracy for men</li>
-          </ul>
-          <blockquote>Read on their own, this looks like the model works better for women.</blockquote>
+      <div class="research-pipeline reveal">
+        <div class="pipeline-step"><div class="step-no">01 - TARGET</div><h3>Adoption Tier</h3><p>A four-level ordinal target built from account and digital-usage indicators: Excluded, Basic, Digitally Engaged, Advanced.</p></div>
+        <div class="pipeline-step"><div class="step-no">02 - LEAKAGE AUDIT</div><h3>Caught and fixed</h3><p>An early run that included the variables used to define the target produced spurious near-perfect accuracy. Those seven variables were removed before any reported result.</p></div>
+        <div class="pipeline-step"><div class="step-no">03 - MODELLING</div><h3>Supervised + unsupervised</h3><p>Random Forest and XGBoost for prediction; k-means run independently, blind to the target label, for segmentation.</p></div>
+        <div class="pipeline-step"><div class="step-no">04 - VALIDATION</div><h3>Robustness suite</h3><p>Hyperparameter tuning, repeated cross-validation, calibration analysis, ablation study, and bootstrap cluster stability.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="models">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Models</div>
+        <h2>Four classifiers, one used as the analytical instrument</h2>
+        <p>Logistic Regression, Decision Tree, Random Forest, and XGBoost were all trained. Random Forest (tuned) was selected as the model used for explainability and diagnostics, based on macro F1.</p>
+      </div>
+      <div class="research-card reveal" style="max-width:74ch;">
+        <p style="margin-bottom:0;">A macro F1 around 0.49 given four imbalanced classes and n=1,000 is the realistic ceiling for this feature set - not a shortfall to be tuned away. The model's role in this study is <strong style="color:var(--paper);">interrogative, not predictive</strong>: it exists to extract feature-outcome relationships (via SHAP and permutation importance) and cross-validate the segmentation below, not to serve as a deployable individual-level classifier. Full model comparison numbers and the feature-importance chart are on the <a href="interactive.html" style="color:var(--brass);">Interactive Data</a> page.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="clustering">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Clustering</div>
+        <h2>An independent check, not a re-labelling of the target</h2>
+        <p>k-means was run on demographic, access, behaviour, and resilience variables only - the Adoption Tier target was never a clustering input, at any stage.</p>
+      </div>
+      <div class="research-card reveal" style="max-width:74ch;">
+        <p>This separation is deliberate. Because Adoption Tier is itself constructed from account and digital-usage indicators, including it as a clustering feature would let the clusters trivially reproduce the target rather than reveal independent structure. k was selected via silhouette score (k=2 to 5, k=3 selected), and the resulting cluster labels - like "Connected but Unengaged" - are descriptive summaries applied <em>after</em> clustering, not categories the algorithm was told to find. The full cluster explorer is on the <a href="interactive.html" style="color:var(--brass);">Interactive Data</a> page; the headline finding is on <a href="findings.html" style="color:var(--brass);">Findings</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="shap">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">SHAP</div>
+        <h2>Explaining the model, not just scoring it</h2>
+        <p>The tuned Random Forest was explained using SHAP TreeExplainer values, averaged across all four Adoption Tier classes, with dependence plots for the top-ranked features.</p>
+      </div>
+      <div class="research-card reveal" style="max-width:74ch;">
+        <p style="margin-bottom:0;">A useful distinction throughout this study: SHAP, Gini, and permutation rankings describe a variable's <strong style="color:var(--paper);">contribution to model output</strong>, not a cause of adoption. Findex is a cross-sectional survey, so no causal identification strategy is used here - a feature ranked highly is one the model relies on to predict, which is informative about association, not proof that changing it would change behaviour. Full SHAP ranking and dependence plots are on the <a href="interactive.html" style="color:var(--brass);">Interactive Data</a> page.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="robustness">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Robustness</div>
+        <h2>Every major finding was stress-tested</h2>
+        <p>Rather than reporting a single train-test split, model performance and the cluster structure were both checked for stability using independent methods.</p>
+      </div>
+      <div class="findings reveal">
+        <div class="finding">
+          <div class="fig">MODEL</div>
+          <h3>Repeated cross-validation</h3>
+          <p>50 folds (5-fold x 10 repeats) of the tuned Random Forest: mean macro F1 = 0.480, 95% CI [0.447, 0.521] - tightly bracketing the single-split estimate of 0.494.</p>
         </div>
-        <div class="profile-card">
-          <div class="profile-no">B</div>
-          <h3>Why that's misleading</h3>
-          <ul>
-            <li>Gender and outcome are strongly entangled (Cramer's V = 0.807)</li>
-            <li>Most women fall into the largest, easiest-to-predict class</li>
-          </ul>
-          <blockquote>Higher accuracy here reflects class imbalance, not fairer treatment.</blockquote>
+        <div class="finding">
+          <div class="fig">CLUSTERS</div>
+          <h3>Bootstrap stability</h3>
+          <p>100 bootstrap resamples of the k=3 solution: Adjusted Rand Index = 0.904 (95% CI [0.847, 0.982]) - the cluster structure is highly reproducible.</p>
         </div>
-        <div class="profile-card">
-          <div class="profile-no">C</div>
-          <h3>What we recommend instead</h3>
-          <ul>
-            <li>Report subgroup-level macro F1, not aggregate accuracy</li>
-            <li>Applies to similar financial-inclusion models generally</li>
-          </ul>
-          <blockquote>Not a Pakistan-specific issue - a general risk wherever a demographic variable is entangled with outcome.</blockquote>
+        <div class="finding">
+          <div class="fig">FAIRNESS</div>
+          <h3>The accuracy paradox</h3>
+          <p>Raw subgroup accuracy looks higher for women (85.2% vs. 68.9% for men) - but this is a class-imbalance artifact, not fairer treatment. See below.</p>
         </div>
       </div>
 
       <div style="margin-top:56px;">
-        <p style="color:var(--paper-dim, #9498B3); max-width:64ch; font-size:15px; line-height:1.7;">
-          A second, related check: the model's predicted probabilities are poorly calibrated for the Excluded class - when it assigns roughly 40% probability to someone being excluded, the true observed rate is closer to 65-70%. In practice, this means the model <em>systematically underestimates</em> how many people are excluded when its raw probabilities are used directly, rather than its hard predictions. Anyone using a model like this for resource targeting would need to correct for that before trusting the numbers.
+        <p style="color:var(--paper-dim); max-width:70ch; font-size:15px; line-height:1.7;">
+          Because gender is very strongly associated with cluster membership and outcome in this population (Cramer's V = 0.807), the majority of women fall into the large, easy-to-predict Excluded class - which mechanically inflates aggregate accuracy for that subgroup without reflecting anything about fairness. We recommend subgroup-level macro F1, not aggregate accuracy, for fairness audits in similar settings. A second check found the model's predicted probabilities are poorly calibrated for the Excluded class - it assigns roughly 40% probability when the true observed rate is closer to 65-70%, meaning raw probabilities would understate the scale of exclusion if used for resource targeting without recalibration.
         </p>
       </div>
     </div>
@@ -157,46 +163,59 @@
   <section class="alt" id="limits">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Research integrity</div>
+        <div class="eyebrow">Limitations</div>
         <h2>What this study cannot tell us</h2>
         <p>The strongest claims are often the ones that clearly define their boundaries.</p>
       </div>
 
       <div class="limitations reveal">
-        <div class="limit-card"><h3>Association is not causation</h3><p>The analysis identifies relationships but does not prove intervention effects.</p></div>
-        <div class="limit-card"><h3>Cross-sectional data</h3><p>The study captures respondents at one point in time and cannot establish trajectories.</p></div>
-        <div class="limit-card"><h3>Self-reported information</h3><p>Several measures rely on reported behaviour and inherit survey-based limits.</p></div>
-        <div class="limit-card"><h3>Context matters</h3><p>Results describe this Pakistan sample and should not be generalized automatically.</p></div>
+        <div class="limit-card"><h3>Association is not causation</h3><p>The analysis identifies relationships but does not prove intervention effects - Findex is cross-sectional, with no causal identification strategy applied.</p></div>
+        <div class="limit-card"><h3>Unweighted sample</h3><p>All reported proportions describe the n=1,000 sample as collected, without Findex's survey design weights - they are not adjusted population estimates.</p></div>
+        <div class="limit-card"><h3>Small subgroups</h3><p>The Basic tier (n=21) is too small for reliable per-class evaluation by any model tested - a sample-size constraint, not a modelling failure.</p></div>
+        <div class="limit-card"><h3>Self-reported data</h3><p>Several measures rely on reported behaviour and inherit standard survey-based limitations.</p></div>
       </div>
 
       <div class="next-work reveal">
         <div class="eyebrow">What comes next</div>
-        <h3 style="font-family:'Fraunces',serif;font-size:25px;margin-top:12px;">Questions the next study should answer</h3>
+        <h3 style="font-family:'Fraunces',serif;font-size:24px;margin-top:12px;">Questions the next study should answer</h3>
         <ul>
-          <li>Longitudinal data: how do people move between segments?</li>
+          <li>Longitudinal data: how do people move between segments over time?</li>
           <li>Qualitative research: why are connected people not engaging?</li>
           <li>Causal methods: which interventions actually change behaviour?</li>
           <li>Cross-country replication: is the access-usage gap universal?</li>
+          <li>Reweighted reanalysis: do the proportions hold under Findex's survey weights?</li>
           <li>Intervention testing: what closes the gap in practice?</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="impact">
+  <section id="resources">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">From finding to action</div>
-        <h2>What could these findings lead to?</h2>
-        <p>These are hypotheses for further research, not proven policy outcomes.</p>
+        <div class="eyebrow">Resources</div>
+        <h2>Everything behind the story</h2>
+        <p>The website is the accessible layer. The paper, code, and source data are the research record.</p>
       </div>
-      <div class="impact-grid reveal">
-        <div class="impact-card"><h3>66.8% remain excluded despite connectivity</h3><div class="arrow">Possible explanation</div><p>Trust, onboarding friction, costs, or behavioural barriers may matter alongside access.</p><div class="arrow">Possible intervention</div><p>Test targeted digital-finance education and simpler onboarding.</p></div>
-        <div class="impact-card"><h3>96.3% of the excluded cluster are women</h3><div class="arrow">Possible explanation</div><p>Participation may be shaped by barriers not captured by connectivity alone.</p><div class="arrow">Possible intervention</div><p>Design and evaluate women-focused access and literacy programmes.</p></div>
-        <div class="impact-card"><h3>Access is weaker than behaviour in explaining engagement</h3><div class="arrow">Research question</div><p>Can interventions that change saving or participation behaviour improve inclusion?</p><div class="arrow">What to test</div><p>Move toward longitudinal and intervention-based research.</p></div>
+      <div class="resource-grid reveal">
+        <div class="resource"><h3>Research paper</h3><p>Full methodology, statistical analysis, validation, results and limitations.</p><a href="https://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan/blob/main/paper/BeyondAccess.pdf" target="_blank" rel="noopener">READ PAPER -></a></div>
+        <div class="resource"><h3>GitHub repository</h3><p>Code, notebooks, figures, environment and replication instructions.</p><a href="https://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan" target="_blank" rel="noopener">GITHUB -></a></div>
+        <div class="resource"><h3>Global Findex data</h3><p>Public World Bank source dataset used for the Pakistan analysis.</p><a href="https://microdata.worldbank.org/index.php/catalog/7961" target="_blank" rel="noopener">DATASET -></a></div>
+      </div>
+      <div class="refs reveal">
+        <div class="eyebrow">References</div>
+        <ol style="margin-top:16px;">
+          <li>T. A. Chowdhury et al., "Modeling financial literacy through explainable machine learning and behavioral segmentation in emerging economies," <em>Computers in Human Behavior Reports</em>, 2026.</li>
+          <li>A. Emuron, A. D. Kapim Kenfack, and M. Msimanga, "Fintech predictive modelling using machine learning: An empirical investigation of South Africa," <em>African Journal of Science, Technology, Innovation and Development</em>, pp. 889-899, 2025.</li>
+          <li>S. Saidy and A. D. Hassan, "Modeling drivers of fintech adoption in Sub-Saharan Africa using machine learning," <em>Digital Finance</em>, vol. 7, pp. 1065-1091, 2025.</li>
+          <li>World Bank, "Global Findex Database 2025, Pakistan," Reference: PAK_2024_FINDEX_v02_M, World Bank Microdata Library, 2025.</li>
+          <li>T. Suri and W. Jack, "The long-run poverty and gender impacts of mobile money," <em>Science</em>, vol. 354, no. 6317, pp. 1288-1292, 2016.</li>
+          <li>A. Demirguc-Kunt, L. Klapper, D. Singer, and S. Ansar, <em>The Global Findex Database 2021: Financial Inclusion, Digital Payments, and Resilience in the Age of COVID-19</em>. Washington, DC: World Bank, 2022.</li>
+        </ol>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer id="footer">
@@ -205,8 +224,10 @@
       <div class="footer-col">
         <h5>Navigate</h5>
         <a href="index.html">Home</a>
-        <a href="research.html">Research details</a>
-        <a href="community.html">Community and resources</a>
+        <a href="research.html">Research</a>
+        <a href="findings.html">Findings</a>
+        <a href="interactive.html">Interactive Data</a>
+        <a href="about.html">About</a>
       </div>
       <div class="footer-col">
         <h5>Connect</h5>
@@ -218,6 +239,5 @@
 </footer>
 
 <script src="common.js"></script>
-
 </body>
 </html>

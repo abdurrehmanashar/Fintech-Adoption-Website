@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Findings - Fintech Adoption in Pakistan</title>
+<meta name="description" content="The strongest findings from the study, made visual: a large access-rich but adoption-poor population segment in Pakistan.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2310161A'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' font-weight='600' fill='%23C9A24B' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Findings - Fintech Adoption in Pakistan">
+<meta property="og:description" content="44.3% of Pakistanis are Connected but Unengaged - near-universal access, yet formally excluded from finance.">
+<meta property="og:url" content="https://umema2004.github.io/Fintech-Adoption-Website/findings.html">
+<meta property="og:site_name" content="Fintech Adoption in Pakistan">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Fintech Adoption in <span>Pakistan</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a class="active" href="findings.html">Findings</a>
+      <a href="interactive.html">Interactive Data</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page-main">
+
+  <section id="flagship-finding">
+    <div class="wrap">
+      <div class="page-intro reveal">
+        <div class="eyebrow">Findings</div>
+        <h1>The gap, in one number</h1>
+        <p>Everything else in this study builds toward - or independently confirms - this single finding.</p>
+      </div>
+
+      <div class="flagship reveal">
+        <div>
+          <div class="flagship-num">44.3<span style="font-size:0.4em;">%</span></div>
+        </div>
+        <div>
+          <div class="flagship-label">Connected but Unengaged</div>
+          <div class="flagship-rows">
+            <div class="flagship-row"><span class="n">98.0%</span> mobile phone ownership in this segment</div>
+            <div class="flagship-row"><span class="n">62.3%</span> regular internet use in this segment</div>
+            <div class="flagship-row"><span class="n">66.8%</span> still formally excluded from the financial system</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-block reveal">
+        <p>"Digital access has grown faster than digital finance. The two are usually treated as the same story - the data says they are not."</p>
+        <cite>From the underlying research, 2026</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="three-findings">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Three findings worth sitting with</div>
+        <h2>What the data shows</h2>
+        <p>Drawn from an independent analysis of 1,000 respondents in the World Bank's Global Findex 2025 survey.</p>
+      </div>
+
+      <div class="findings reveal">
+        <div class="finding">
+          <div class="fig">01</div>
+          <div class="finding-stat">44%</div>
+          <h3>Access is not the bottleneck</h3>
+          <p>44% of people have near-universal phone and internet access - but two-thirds of them are still formally excluded from the financial system.</p>
+        </div>
+        <div class="finding">
+          <div class="fig">02</div>
+          <div class="finding-stat">96%</div>
+          <h3>The gap has a gender</h3>
+          <p>The most digitally excluded group is 96% women. Gender predicts financial exclusion more strongly than region in this dataset.</p>
+        </div>
+        <div class="finding">
+          <div class="fig">03</div>
+          <div class="finding-stat">#1</div>
+          <h3>It is what you do, not what you own</h3>
+          <p>Saving habits and workforce participation were stronger predictors of engagement than phone ownership alone.</p>
+        </div>
+      </div>
+
+      <div class="method-strip reveal">
+        <span class="pill">Random Forest and XGBoost</span>
+        <span class="pill">SHAP explainability</span>
+        <span class="pill">k-means and Ward cross-check</span>
+        <span class="pill">Chi-square and Cramer's V</span>
+        <span class="pill">Global Findex Pakistan, 2024</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="segments">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">The three populations</div>
+        <h2>Three different versions of financial inclusion</h2>
+        <p>Independent, unsupervised clustering - blind to the adoption label - recovers three distinct groups.</p>
+      </div>
+
+      <div class="profile-grid reveal">
+        <div class="profile-card">
+          <div class="profile-no">01</div><h3>Digitally Excluded</h3><div class="profile-share">43.1%</div>
+          <ul><li><strong>96.3%</strong> women</li><li><strong>28.3%</strong> mobile ownership</li><li><strong>9.7%</strong> regular internet use</li><li><strong>89.3%</strong> formally excluded</li></ul>
+          <blockquote>The problem here is access itself.</blockquote>
+        </div>
+        <div class="profile-card">
+          <div class="profile-no">02</div><h3>Connected but Unengaged</h3><div class="profile-share">44.3%</div>
+          <ul><li><strong>16.3%</strong> women</li><li><strong>98.0%</strong> mobile ownership</li><li><strong>62.3%</strong> regular internet use</li><li><strong>66.8%</strong> formally excluded</li></ul>
+          <blockquote>They are connected but not participating.</blockquote>
+        </div>
+        <div class="profile-card">
+          <div class="profile-no">03</div><h3>Advanced Adopters</h3><div class="profile-share">12.6%</div>
+          <ul><li><strong>10.3%</strong> women</li><li><strong>98.4%</strong> mobile ownership</li><li><strong>93.7%</strong> regular internet use</li><li><strong>0.8%</strong> formally excluded</li></ul>
+          <blockquote>This is what full participation looks like.</blockquote>
+        </div>
+      </div>
+
+      <div style="margin-top:40px; text-align:center;">
+        <a class="btn btn-ghost" href="interactive.html">Explore the full cluster map -></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="findings.html">Findings</a>
+        <a href="interactive.html">Interactive Data</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="https://github.com/abdurrehmanashar/Explainable-ML-for-Fintech-Adoption-Behavioural-Segmentation-in-Pakistan" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:abdurrehmanashar@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+</body>
+</html>
