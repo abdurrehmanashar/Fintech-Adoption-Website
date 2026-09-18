@@ -47,19 +47,77 @@
 
       <div class="viz-panel reveal">
         <div class="viz-head">
-          <div class="viz-title">1,000 people, three groups<span>Every dot represents respondents at the same real proportions as the survey</span></div>
+          <div class="viz-title">1,000 people, three groups<span>Bars show the published cluster proportions from the survey</span></div>
           <div class="toggle-group" role="group" aria-label="Colour the visualization by">
             <button class="toggle-btn active" data-mode="adoption">By adoption status</button>
             <button class="toggle-btn" data-mode="gender">By gender</button>
           </div>
         </div>
         <div class="viz-body">
-          <canvas id="populationCanvas" role="img" aria-label="Scatter visualization of the three population clusters, colourable by adoption status or gender"></canvas>
+          <canvas id="populationCanvas" role="img" aria-label="Stacked bar chart of the three population clusters, colourable by adoption status or gender"></canvas>
           <div class="viz-tooltip" id="vizTooltip"></div>
         </div>
         <div class="viz-legend" id="vizLegend"></div>
         <div class="viz-caption">
-          Illustrative visualization - cluster sizes, and the share of each group that is excluded or female, exactly match the published segmentation results (k-means, n=1,000, Global Findex Pakistan 2024). Individual dot positions within a cluster are randomized for display and are not real per-respondent coordinates.
+          Cluster sizes and stacked subgroup shares match the published segmentation results (k-means, n=1,000, Global Findex Pakistan 2024). Bar height shows each cluster's share of the sample; color shows either formal exclusion or gender, depending on the selected toggle.
+        </div>
+      </div>
+
+      <div class="viz-panel reveal" id="cluster-map">
+        <div class="viz-head">
+          <div class="viz-title">The cluster map<span>Real PCA projection of the k=3 k-means solution</span></div>
+        </div>
+        <div class="viz-body">
+          <canvas id="clusterMapCanvas" role="img" aria-label="PCA scatter plot of respondents colored by k-means cluster assignment"></canvas>
+        </div>
+        <div class="viz-legend" id="clusterMapLegend"></div>
+        <div class="viz-caption">
+          Real PCA projection of the k=3 k-means solution from Fig. 12, validated via bootstrap ARI = 0.904 and Ward agglomerative cross-check ARI = 0.740.
+        </div>
+      </div>
+
+      <div class="research-card reveal cluster-profile-table-card">
+        <div class="eyebrow">Table VII</div>
+        <h3>Cluster profiles</h3>
+        <div class="table-scroll">
+          <table class="metric-table cluster-profile-table" id="clusterProfileTable">
+            <thead>
+              <tr>
+                <th><button type="button" data-sort="text">Cluster name</button></th>
+                <th><button type="button" data-sort="number">n (%)</button></th>
+                <th><button type="button" data-sort="number">% Female</button></th>
+                <th><button type="button" data-sort="number">% Rural</button></th>
+                <th><button type="button" data-sort="number">% Mobile</button></th>
+                <th><button type="button" data-sort="number">% Excluded</button></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Digitally Excluded Women</td>
+                <td data-value="431">431 (43.1%)</td>
+                <td data-value="96.3">96.3%</td>
+                <td data-value="51.0">51.0%</td>
+                <td data-value="28.3">28.3%</td>
+                <td data-value="89.3">89.3%</td>
+              </tr>
+              <tr>
+                <td>Connected but Unengaged</td>
+                <td data-value="443">443 (44.3%)</td>
+                <td data-value="16.3">16.3%</td>
+                <td data-value="46.0">46.0%</td>
+                <td data-value="98.0">98.0%</td>
+                <td data-value="66.8">66.8%</td>
+              </tr>
+              <tr>
+                <td>Advanced Adopters</td>
+                <td data-value="126">126 (12.6%)</td>
+                <td data-value="10.3">10.3%</td>
+                <td data-value="28.6">28.6%</td>
+                <td data-value="98.4">98.4%</td>
+                <td data-value="0.8">0.8%</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -111,19 +169,58 @@
       <div class="section-head reveal">
         <div class="eyebrow">Explainability</div>
         <h2>What predicts engagement?</h2>
-        <p>Mean |SHAP| value per feature, from the tuned Random Forest, averaged across all four adoption tiers.</p>
+        <p>Top feature-importance results from Table IV / Fig. 8, comparing Gini importance, permutation importance, and SHAP importance.</p>
       </div>
       <div class="research-card reveal">
-        <div class="bar-chart">
-          <div class="bar-row"><span>Saving via mobile money</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span>0.092</span></div>
-          <div class="bar-row"><span>Age</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span>0.057</span></div>
-          <div class="bar-row"><span>Workforce participation</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span>0.055</span></div>
-          <div class="bar-row"><span>Informal saving</span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div><span>0.036</span></div>
-          <div class="bar-row"><span>Income quintile</span><div class="bar-track"><div class="bar-fill" style="width:35%"></div></div><span>0.032</span></div>
-          <div class="bar-row"><span>Mobile phone ownership</span><div class="bar-track"><div class="bar-fill" style="width:26%"></div></div><span>0.024</span></div>
-          <div class="bar-row"><span>Gender</span><div class="bar-track"><div class="bar-fill" style="width:21%"></div></div><span>0.019</span></div>
+        <div class="importance-legend" aria-label="Feature importance methods">
+          <div class="legend-item"><span class="legend-dot gini-dot"></span> Gini importance</div>
+          <div class="legend-item"><span class="legend-dot permutation-dot"></span> Permutation importance</div>
+          <div class="legend-item"><span class="legend-dot shap-dot"></span> SHAP importance</div>
         </div>
-        <p class="metric-note">Gender ranks 7th here - but that's <em>this specific chart's</em> question: how much does gender help predict one person's adoption tier, alongside everything else. It answers a different question than the population-level result above, where gender is the strongest predictor of which segment someone belongs to (Cramer's V = 0.807). Both are real findings; they're just not the same measurement.</p>
+        <div class="importance-chart" aria-label="Grouped horizontal bar chart comparing feature importance methods">
+          <div class="importance-row">
+            <div class="importance-feature">fin17b</div>
+            <div class="importance-bars">
+              <div class="importance-bar-line"><span>Gini</span><div class="importance-track"><div class="importance-fill gini-fill" style="width:91%"></div></div><strong>0.2099</strong></div>
+              <div class="importance-bar-line"><span>Permutation</span><div class="importance-track"><div class="importance-fill permutation-fill" style="width:47%"></div></div><strong>0.1087</strong></div>
+              <div class="importance-bar-line"><span>SHAP</span><div class="importance-track"><div class="importance-fill shap-fill" style="width:40%"></div></div><strong>0.0915</strong></div>
+            </div>
+          </div>
+          <div class="importance-row">
+            <div class="importance-feature">age</div>
+            <div class="importance-bars">
+              <div class="importance-bar-line"><span>Gini</span><div class="importance-track"><div class="importance-fill gini-fill" style="width:100%"></div></div><strong>0.2307</strong></div>
+              <div class="importance-bar-line"><span>Permutation</span><div class="importance-track"><div class="importance-fill permutation-fill" style="width:3%"></div></div><strong>0.0059</strong></div>
+              <div class="importance-bar-line"><span>SHAP</span><div class="importance-track"><div class="importance-fill shap-fill" style="width:25%"></div></div><strong>0.0571</strong></div>
+            </div>
+          </div>
+          <div class="importance-row">
+            <div class="importance-feature">in_workforce</div>
+            <div class="importance-bars">
+              <div class="importance-bar-line"><span>Gini</span><div class="importance-track"><div class="importance-fill gini-fill" style="width:34%"></div></div><strong>0.0786</strong></div>
+              <div class="importance-bar-line"><span>Permutation</span><div class="importance-track"><div class="importance-fill permutation-fill" style="width:10%"></div></div><strong>0.0221</strong></div>
+              <div class="importance-bar-line"><span>SHAP</span><div class="importance-track"><div class="importance-fill shap-fill" style="width:24%"></div></div><strong>0.0551</strong></div>
+            </div>
+          </div>
+          <div class="importance-row">
+            <div class="importance-feature">fin17c</div>
+            <div class="importance-bars">
+              <div class="importance-bar-line"><span>Gini</span><div class="importance-track"><div class="importance-fill gini-fill" style="width:30%"></div></div><strong>0.0689</strong></div>
+              <div class="importance-bar-line"><span>Permutation</span><div class="importance-track"><div class="importance-fill permutation-fill" style="width:20%"></div></div><strong>0.0459</strong></div>
+              <div class="importance-bar-line"><span>SHAP</span><div class="importance-track"><div class="importance-fill shap-fill" style="width:16%"></div></div><strong>0.0364</strong></div>
+            </div>
+          </div>
+          <div class="importance-row">
+            <div class="importance-feature">inc_q</div>
+            <div class="importance-bars">
+              <div class="importance-bar-line"><span>Gini</span><div class="importance-track"><div class="importance-fill gini-fill" style="width:39%"></div></div><strong>0.0905</strong></div>
+              <div class="importance-bar-line"><span>Permutation</span><div class="importance-track"><div class="importance-fill permutation-fill" style="width:3%"></div></div><strong>0.0067</strong></div>
+              <div class="importance-bar-line"><span>SHAP</span><div class="importance-track"><div class="importance-fill shap-fill" style="width:14%"></div></div><strong>0.0319</strong></div>
+            </div>
+          </div>
+        </div>
+        <p class="metric-note">Gini and SHAP largely agree; permutation importance &mdash; which measures actual performance degradation &mdash; agrees only weakly, suggesting some features' importance comes from correlation with other predictors rather than standalone necessity.</p>
+        <p class="metric-note">Spearman rank correlations: Gini vs SHAP &rho; = 0.914 (p &lt; 0.0001); Permutation vs SHAP &rho; = 0.504 (p = 0.0557, not significant at &alpha;=0.05). Permutation importance is negative for several features (con1, female, internet_use, fin24a, educ, is_rural), meaning shuffling those features didn't reliably hurt model performance.</p>
       </div>
     </div>
   </section>
@@ -170,6 +267,7 @@
   </div>
 </footer>
 
+<script src="pca_cluster_coords.js"></script>
 <script src="viz.js"></script>
 <script src="common.js"></script>
 </body>
